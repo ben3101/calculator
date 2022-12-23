@@ -1,5 +1,5 @@
 body{
-    margin:0 10% 0 10%;
+    margin:0 25% 0 25%;
     font-size: 24px;
 }
 
@@ -9,8 +9,6 @@ h1{
 }
 
 .row{
-    
-    width:100%;
     height:7.5vw;
 }
 .row button{
@@ -18,28 +16,41 @@ h1{
     height:100%;
 }
 
+
 #display{
     text-align:center;
+    vertical-align: middle;
+    background-color: grey;
+    border:solid black 0.5vw;
+}
+
+.displayP{
+    margin-top: 0;
+    margin-bottom: 0;
+    
 }
 
 .mainDiv{
-    border:solid black 1px;
-    width:100%;
+    text-align: center;
+    height:auto;
+    width:auto;
     background-color: grey;
 }
 
 #row5{
-    width: 400%;
+    width: 100%;
 }
-#displayDiv{
-    border:solid black 1px;
+#equals{
+    width:100%;
 }
+
 .mainDiv p{
-    font-size:36px;
+    font-size:9vw;
 }
 .mainDiv button{
-    border:solid black 1px;
+    border:solid black 0.5vw;
     background-color: darkcyan;
+    font-size: 5vw;
 }
 #add, #multiply, #divide, #subtract{
     background-color: green;
