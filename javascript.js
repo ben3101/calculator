@@ -39,6 +39,29 @@ decimalButton.addEventListener('click', enterDecimal);
 //store last pressed operator button
 let currentOperator = "";
 
+//if current operator, highlight the button
+function updateButtonDisplay(){
+    if(currentOperator === add){
+        console.log("add");
+        addButton.setAttribute('style', 'background-color: mediumseagreen;');
+    }
+    else if(currentOperator === subtract){
+        subtractButton.setAttribute('style', 'background-color: mediumseagreen;');
+    }
+    else if(currentOperator === multiply){
+        multiplyButton.setAttribute('style', 'background-color: mediumseagreen;');
+    }
+    else if(currentOperator === divide){
+        divideButton.setAttribute('style', 'background-color: mediumseagreen;');
+    }else{
+        //if there is no current operation, none of them should be highighted
+        addButton.setAttribute('style', 'background-color: green;');
+        subtractButton.setAttribute('style', 'background-color: green;');
+        multiplyButton.setAttribute('style', 'background-color: green;');
+        divideButton.setAttribute('style', 'background-color: green;');
+    }
+}
+
 //functions
 //function for each number button
 function selectNumber(){//if no previous operator selected
@@ -96,6 +119,8 @@ function clear(){
     display.textContent = 0;
     lastValue = "";
     currentOperator = "";
+    updateButtonDisplay()
+    
 }
 
 //operator function - apply selected operator to the current value
@@ -123,15 +148,19 @@ function operation(){
     switch (operatorValue){
         case '+':
             currentOperator = add;
+            updateButtonDisplay()
             break;
         case '-':
             currentOperator = subtract;
+            updateButtonDisplay()
             break;
         case 'x':
             currentOperator = multiply;
+            updateButtonDisplay()
             break;
         case '÷':
             currentOperator = divide;
+            updateButtonDisplay()
             break;
     } 
 }
@@ -146,6 +175,7 @@ function equals(){
     display.textContent = displayValue;
     //reset currentOperator, update lastValue
     currentOperator = "";
+    updateButtonDisplay()
     lastValue = answer;
     }
     else{
