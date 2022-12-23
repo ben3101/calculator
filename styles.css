@@ -1,0 +1,46 @@
+body{
+    margin:0 10% 0 10%;
+    font-size: 24px;
+}
+
+
+h1{
+    text-align: center;
+}
+
+.row{
+    
+    width:100%;
+    height:7.5vw;
+}
+.row button{
+    width:25%;
+    height:100%;
+}
+
+#display{
+    text-align:center;
+}
+
+.mainDiv{
+    border:solid black 1px;
+    width:100%;
+    background-color: grey;
+}
+
+#row5{
+    width: 400%;
+}
+#displayDiv{
+    border:solid black 1px;
+}
+.mainDiv p{
+    font-size:36px;
+}
+.mainDiv button{
+    border:solid black 1px;
+    background-color: darkcyan;
+}
+#add, #multiply, #divide, #subtract{
+    background-color: green;
+}
