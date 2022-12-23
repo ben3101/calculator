@@ -7,7 +7,6 @@ let displayValue = "";
 //the value after that will be one currently displayed
 let lastValue = "";
 
-
 //initially display 0
 display.textContent = 0;
 const numbers = [];
@@ -28,10 +27,10 @@ const subtractButton = document.getElementById("subtract");
 const multiplyButton = document.getElementById("multiply");
 const divideButton = document.getElementById("divide");
 
-addButton.addEventListener('click', addition);
-subtractButton.addEventListener('click', subtraction);
-multiplyButton.addEventListener('click', multiplication);
-divideButton.addEventListener('click', division);
+addButton.addEventListener('click', operation);
+subtractButton.addEventListener('click', operation);
+multiplyButton.addEventListener('click', operation);
+divideButton.addEventListener('click', operation);
 
 //decimal button
 decimalButton = document.getElementById('decimal');
@@ -41,23 +40,10 @@ decimalButton.addEventListener('click', enterDecimal);
 let currentOperator = "";
 
 //functions
-/*
-function sum(){
-    //create an array from the arguments
-    let values = Array.from(arguments);
-    //cycle through array and add the elements
-    let sum = 0;
-    for(let i=0; i<values.length; i++){
-        sum += values[i];
-    }
-    return sum;
-}*/
-
 //function for each number button
 function selectNumber(){//if no previous operator selected
     if(currentOperator === ""){
     updateDisplay(this.textContent);
-    console.log(displayValue);
     }else{
         displayValue = this.textContent;
         display.textContent = displayValue;
@@ -65,29 +51,10 @@ function selectNumber(){//if no previous operator selected
     }
 }
 
-/*
-function equals(){
-    if(lastValue !== "" && displayValue !== "" && currentOperator !== ""){
-    console.log(currentOperator, lastValue, displayValue);
-    let answer = operate(currentOperator, lastValue, displayValue);
-    displayValue = answer;
-    display.textContent = displayValue;
-    //reset currentOperator, update lastValue
-    currentOperator = "";
-    lastValue = answer;
-    }
-    else{
-        return;
-    }
-}
-*/
-
 //'.' button for entering decimals
 function enterDecimal(){
-    //console.log('enter decimal');
     //check it doesn't already have a decimal point
     if(!display.textContent.includes('.')){
-        //currentOperator = '.';
         updateDisplay('.');
     }else{//if it already has one, don't do anything
         return;
@@ -139,70 +106,41 @@ function operate(operator, storedNum, nextNum){
     return operator(storedNum, nextNum);
 }
 
-//TODO: move all 4 into the operation function for cleaner code--------------------------------
 //operator button functions 
-function operation(){/*
-    //select correct operator function
-    currentOperator = this.id;
- 
-    */
-}
-
-//code for each button. 
-//-Update the currentOperator variable
-//-Save the prev display value 
-function addition(){
-    //if the current operator is not blank, 
+//-check if an operation has already been selected, evaluate if so
+//-store the last value
+//-update the current operator as appropriate
+function operation(){
     if(currentOperator!==""){
         //carry out that operation first 
         equals();
     }
     //save previous display value
     lastValue = displayValue;
-    //update the operator
-    currentOperator = add; 
+    //update the operator based on clicked button
+    operatorValue = this.textContent;
+    
+    switch (operatorValue){
+        case '+':
+            currentOperator = add;
+            break;
+        case '-':
+            currentOperator = subtract;
+            break;
+        case 'x':
+            currentOperator = multiply;
+            break;
+        case '÷':
+            currentOperator = divide;
+            break;
+    } 
 }
-function subtraction(){
-        //if the current operator is not blank, 
-        if(currentOperator!==""){
-            //carry out that operation first 
-            equals();
-        }
-        //save previous display value
-        lastValue = displayValue;
-        //update the operator
-        currentOperator = subtract;
-}
-function multiplication(){
-        //if the current operator is not blank, 
-        if(currentOperator!==""){
-            //carry out that operation first 
-            equals();
-        }
-        //save previous display value
-        lastValue = displayValue;
-        //update the operator
-        currentOperator = multiply;
-}
-function division(){
-        //if the current operator is not blank, 
-        if(currentOperator!==""){
-            //carry out that operation first 
-            equals();
-        }
-        //save previous display value
-        lastValue = displayValue;
-        //update the operator
-        currentOperator = divide;
-}
-//-----------------------------------------------------------------------
 
 //equals function
 //-take the stored operation, stored value and current values
 //-carry out that operation and update the display screen
 function equals(){
     if(lastValue !== "" && displayValue !== "" && currentOperator !== ""){
-    console.log(currentOperator, lastValue, displayValue);
     let answer = operate(currentOperator, lastValue, displayValue);
     displayValue = answer;
     display.textContent = displayValue;
