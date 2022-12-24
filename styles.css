@@ -14,6 +14,7 @@ h1{
 .row button{
     width:25%;
     height:100%;
+    box-shadow:0px 1px 2px rgba(0,0,0,0.5);
 }
 
 
@@ -55,3 +56,4 @@ h1{
 #add, #multiply, #divide, #subtract{
     background-color: green;
 }
+

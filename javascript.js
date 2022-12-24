@@ -41,6 +41,12 @@ let currentOperator = "";
 
 //if current operator, highlight the button
 function updateButtonDisplay(){
+    //un-highlight any number button that was pressed
+    for(let i=0; i<10; i++){
+        numbers[i] = document.getElementById(`b${i}`);
+        numbers[i].setAttribute('style', 'background-color: darkcyan;');
+    }
+
     if(currentOperator === add){
         console.log("add");
         addButton.setAttribute('style', 'background-color: mediumseagreen;');
@@ -72,6 +78,8 @@ function selectNumber(){//if no previous operator selected
         display.textContent = displayValue;
         operate(currentOperator, lastValue, displayValue);
     }
+    //indicate it was clicked
+    this.setAttribute('style', 'background-color: cyan;');
 }
 
 //'.' button for entering decimals
@@ -85,7 +93,7 @@ function enterDecimal(){
 }
 
 function updateDisplay(enteredValue){
-    if(displayValue == 0){//removes the 0 at start of display
+    if(displayValue == 0 || displayValue == "OOPS, can't be doing that!"){//removes the 0 at start of display
         displayValue = enteredValue;
     }else{
     displayValue += enteredValue;
